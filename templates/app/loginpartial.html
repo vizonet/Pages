@@ -1,0 +1,24 @@
+<ul class="nav navbar-nav navbar-right vcenter">
+    {% if user.is_authenticated %}
+        <li>
+            <a href="{% url 'admin:index' %}">Admin site</a>
+        </li>
+        <li>
+            <span class="navbar-brand">Авторизован: {{ user.username }}</span>
+        </li>
+        <li class="vcenter">
+            <form id="logoutForm" action="/logout" method="post" class="nav navbar-nav navbar-right">
+                {% csrf_token %}
+                <a href="javascript: document.getElementById('logoutForm').submit()">
+                    <span class="yellowgreen">Выход</span>
+                </a>
+            </form>
+        </li>
+    {% else %}
+        <li>
+            <a href="{% url 'login' %}"><span class="size16">Вход</span></a>
+        </li>
+    {% endif %}
+</ul>
+
+

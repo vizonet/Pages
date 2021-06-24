@@ -1,0 +1,38 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+    <div style="padding: 1em">
+        <div class="jumbotron text-center">
+            <h1 class="bold">Pages</h1>
+            <h2>Приложение для создания и просмотра контента страниц</h2>
+        </div>
+        <div style="border-radius: 5px; border: 1px solid green">
+            <h2 style="text-align: center"><b>API - вызовы:</b></h2>
+            <ol>
+                {% for api in api_list %}
+                   <li style="font-size: 16pt; padding-right: 2em">
+                        <span style="font-size: 22pt; background: grey; color: white; padding: 0.15em 0.5em; border-radius: 0.3em">
+                            {{ api.method}}
+                        </span>&emsp;
+
+                        <span style="font-size: 22pt">
+                            <a href="{% if random_page or 'id' not in api.url %}{{ api.url }}{% else %}/{% endif %}">
+                                {{ api.url }}
+                            </a>&emsp;
+                            {{ api.comment }}
+                        </span>
+
+                        <h3 style="padding-left: 1em">
+                            <b>{{ api.info }}:</b>
+                        </h3>
+
+                        <h3 style="border-radius: 7px; padding: 1em; background: #c9e2b3">
+                            {{ api.json }}
+                        </h3>
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+
+{% endblock %}
