@@ -24,7 +24,7 @@ from app import views
 
 urlpatterns = [
     path('', include('app.urls')),                                          # роутинг приложения app
-    path('admin/', admin.site.urls),                                        # роутинг страницы администратора
+    path('admin/', admin.site.urls),                                        # роутинг страниц администратора
     path('login/', RedirectView.as_view(url='/admin/'), name='login'),
     path('logout', LogoutView.as_view(next_page='/'), name='logout'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
